@@ -1,0 +1,53 @@
+{
+  "name": "exercise-in-mithril",
+  "description": "A small example to exercise in Mithril",
+  "version": "0.0.0",
+  "author": {
+    "name": "bouzuya",
+    "email": "m@bouzuya.net",
+    "url": "http://bouzuya.net"
+  },
+  "bugs": {
+    "url": "https://github.com/bouzuya/exercise-in-mithril/issues"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.7.13",
+    "browserify": "^10.2.6",
+    "coffee-script": "^1.9.3",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-b-html": "^0.1.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-espower": "^0.10.1",
+    "gulp-js-string": "^0.1.1",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-mocha": "^2.1.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.4",
+    "power-assert": "^0.11.0",
+    "run-sequence": "^1.1.2",
+    "sinon": "^1.15.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.3"
+  },
+  "homepage": "https://github.com/bouzuya/exercise-in-mithril#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bouzuya/exercise-in-mithril.git"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "watch": "gulp watch"
+  }
+}
