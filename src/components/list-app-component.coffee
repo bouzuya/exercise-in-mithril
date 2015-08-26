@@ -1,7 +1,7 @@
 m = require 'mithril'
-ItemComponent = require './item-component'
-ListComponent = require './list-component'
-NavComponent = require './nav-component'
+ItemComponent = require '../components/item-component'
+ListComponent = require '../components/list-component'
+NavComponent = require '../components/nav-component'
 
 class Component
   constructor: (attrs) ->

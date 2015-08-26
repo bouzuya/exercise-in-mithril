@@ -1,5 +1,5 @@
 m = require 'mithril'
-ItemComponent = require './item-component'
+ItemComponent = require '../components/item-component'
 
 class Component
   constructor: (attrs) ->

@@ -1,6 +1,6 @@
 m = require 'mithril'
-ListAppComponent = require './list-app-component'
-NavComponent = require './nav-component'
+ListAppComponent = require './components/list-app-component'
+NavComponent = require './components/nav-component'
 
 myComponent =
   controller: ->
