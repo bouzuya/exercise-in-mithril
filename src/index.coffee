@@ -1,4 +1,5 @@
 m = require 'mithril'
+NavComponent = require './nav-component'
 
 myComponent =
   controller: ->
@@ -43,24 +44,6 @@ TaskListComponent =
             textDecoration: if task.done() then 'line-through' else 'none'
         }, task.description()
       ]
-
-NavComponent =
-  controller: ->
-    @list = [
-      name: '/'
-      url: '/#/'
-    ,
-      name: '/tasks'
-      url: '/#/tasks'
-    ,
-      name: '/items'
-      url: '/#/items'
-    ]
-    @
-  view: (c) ->
-    m 'ul', c.list.map (i) ->
-      m 'li',
-        m 'a[href=' + i.url + ']', i.name
 
 AppComponent =
   controller: TaskController
