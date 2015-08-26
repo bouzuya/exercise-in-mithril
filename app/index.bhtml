@@ -1,0 +1,9 @@
+<!doctype html
+<html
+  @lang ja
+  <head
+    <title
+      Mithril example
+  <body
+    <script
+      @src bundle.js
