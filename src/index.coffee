@@ -53,6 +53,9 @@ NavComponent =
     ,
       name: '/tasks'
       url: '/#/tasks'
+    ,
+      name: '/items'
+      url: '/#/items'
     ]
     @
   view: (c) ->
@@ -63,7 +66,7 @@ NavComponent =
 AppComponent =
   controller: TaskController
   view: (c) ->
-    [
+    m 'div', [
       NavComponent
     ,
       m 'input',
@@ -81,14 +84,58 @@ AppComponent =
 HomeComponent =
   controller: ->
   view: (c) ->
-    [
+    m 'div', [
       NavComponent
     ,
       'Hello, Mithril!'
     ]
+
+ItemComponent =
+  controller: (attrs) ->
+    item: attrs.item
+  view: (c) ->
+    m 'div', [
+      m 'span',
+        m 'a[href=/#/items/' + c.item.id + ']', c.item.id
+    ,
+      ': '
+    ,
+      m 'span', c.item.value
+    ]
+
+ListComponent =
+  controller: (attrs) ->
+    list: attrs.list
+  view: (c) ->
+    m 'ul', c.list.map (i) ->
+      m 'li',
+        m.component ItemComponent, item: i
+
+ListAppComponent =
+  controller: ->
+    list = [
+      id: '1'
+      value: 'value1'
+    ,
+      id: '2'
+      value: 'value2'
+    ]
+    id = m.route.param 'id'
+    item = if id? then list.filter((i) -> i.id is id)[0] else null
+    { list, item }
+  view: (c) ->
+    m 'div', [
+      NavComponent
+    ,
+      m.component ListComponent, list: c.list
+    ,
+      if c.item? then m.component ItemComponent, item: c.item else null
+    ].filter (i) -> i?
 
 m.route.mode = 'hash'
 
 m.route document.body, '/',
   '/': HomeComponent
   '/tasks': AppComponent
+  '/items': ListAppComponent
+  '/items/:id': ListAppComponent
