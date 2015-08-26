@@ -1,16 +1,7 @@
 m = require 'mithril'
 ListAppComponent = require './components/list-app-component'
 NavComponent = require './components/nav-component'
-
-myComponent =
-  controller: ->
-  view: ->
-
-# Model
-class Task
-  constructor: (data) ->
-    @description = m.prop data.description
-    @done = m.prop false
+Task = require './models/task'
 
 # Controller
 class TaskController
