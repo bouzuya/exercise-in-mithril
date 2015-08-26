@@ -25,7 +25,6 @@ class TaskController
 
 class TaskListController
   constructor: (attrs) ->
-    console.log attrs
     @tasks = attrs.tasks
 
 TaskListComponent =
