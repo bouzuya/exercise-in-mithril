@@ -23,6 +23,28 @@ class TaskController
       @tasks.push new Task { description }
       @description ''
 
+class TaskListController
+  constructor: (attrs) ->
+    console.log attrs
+    @tasks = attrs.tasks
+
+TaskListComponent =
+  controller: TaskListController
+  view: (c) ->
+    m 'table', c.tasks.map (task, index) ->
+      m 'tr', [
+        m 'td', [
+          m 'input[type=checkbox]',
+            onclick: m.withAttr('checked', task.done)
+            checked: task.done()
+        ]
+      ,
+        m 'td', {
+          style:
+            textDecoration: if task.done() then 'line-through' else 'none'
+        }, task.description()
+      ]
+
 component =
   controller: TaskController
   view: (c) ->
@@ -37,19 +59,7 @@ component =
       ,
         m 'button', { onclick: c.add }, 'Add'
       ,
-        m 'table', c.tasks.map (task, index) ->
-          m 'tr', [
-            m 'td', [
-              m 'input[type=checkbox]',
-                onclick: m.withAttr('checked', task.done)
-                checked: task.done()
-            ]
-          ,
-            m 'td', {
-              style:
-                textDecoration: if task.done() then 'line-through' else 'none'
-            }, task.description()
-          ]
+        m.component TaskListComponent, tasks: c.tasks
       ]
     ]
 
