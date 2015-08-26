@@ -1,6 +1,7 @@
 m = require 'mithril'
 ListAppComponent = require './components/list-app-component'
 NavComponent = require './components/nav-component'
+TaskListComponent = require './components/task-list-component'
 Task = require './models/task'
 
 # Controller
@@ -15,27 +16,6 @@ class TaskController
     if description
       @tasks.push new Task { description }
       @description ''
-
-class TaskListController
-  constructor: (attrs) ->
-    @tasks = attrs.tasks
-
-TaskListComponent =
-  controller: TaskListController
-  view: (c) ->
-    m 'table', c.tasks.map (task, index) ->
-      m 'tr', [
-        m 'td', [
-          m 'input[type=checkbox]',
-            onclick: m.withAttr('checked', task.done)
-            checked: task.done()
-        ]
-      ,
-        m 'td', {
-          style:
-            textDecoration: if task.done() then 'line-through' else 'none'
-        }, task.description()
-      ]
 
 AppComponent =
   controller: TaskController
