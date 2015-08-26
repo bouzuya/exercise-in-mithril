@@ -45,22 +45,50 @@ TaskListComponent =
         }, task.description()
       ]
 
-component =
+NavComponent =
+  controller: ->
+    @list = [
+      name: '/'
+      url: '/#/'
+    ,
+      name: '/tasks'
+      url: '/#/tasks'
+    ]
+    @
+  view: (c) ->
+    m 'ul', c.list.map (i) ->
+      m 'li',
+        m 'a[href=' + i.url + ']', i.name
+
+AppComponent =
   controller: TaskController
   view: (c) ->
-    m 'html', [
-      m 'body', [
-        m 'input',
-          # m.withAttr
-          # onchange: (e) ->
-          #   vm.description e.target['value']
-          onchange: m.withAttr('value', c.description)
-          value: c.description()
-      ,
-        m 'button', { onclick: c.add }, 'Add'
-      ,
-        m.component TaskListComponent, tasks: c.tasks
-      ]
+    [
+      NavComponent
+    ,
+      m 'input',
+        # m.withAttr
+        # onchange: (e) ->
+        #   vm.description e.target['value']
+        onchange: m.withAttr('value', c.description)
+        value: c.description()
+    ,
+      m 'button', { onclick: c.add }, 'Add'
+    ,
+      m.component TaskListComponent, tasks: c.tasks
     ]
 
-m.mount document, component
+HomeComponent =
+  controller: ->
+  view: (c) ->
+    [
+      NavComponent
+    ,
+      'Hello, Mithril!'
+    ]
+
+m.route.mode = 'hash'
+
+m.route document.body, '/',
+  '/': HomeComponent
+  '/tasks': AppComponent
