@@ -1,4 +1,5 @@
 m = require 'mithril'
+ItemComponent = require './item-component'
 NavComponent = require './nav-component'
 
 myComponent =
@@ -70,19 +71,6 @@ HomeComponent =
       NavComponent
     ,
       'Hello, Mithril!'
-    ]
-
-ItemComponent =
-  controller: (attrs) ->
-    item: attrs.item
-  view: (c) ->
-    m 'div', [
-      m 'span',
-        m 'a[href=/#/items/' + c.item.id + ']', c.item.id
-    ,
-      ': '
-    ,
-      m 'span', c.item.value
     ]
 
 ListComponent =
