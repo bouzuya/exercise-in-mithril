@@ -1,6 +1,5 @@
 m = require 'mithril'
-ListComponent = require './list-component'
-ItemComponent = require './item-component'
+ListAppComponent = require './list-app-component'
 NavComponent = require './nav-component'
 
 myComponent =
@@ -73,27 +72,6 @@ HomeComponent =
     ,
       'Hello, Mithril!'
     ]
-
-ListAppComponent =
-  controller: ->
-    list = [
-      id: '1'
-      value: 'value1'
-    ,
-      id: '2'
-      value: 'value2'
-    ]
-    id = m.route.param 'id'
-    item = if id? then list.filter((i) -> i.id is id)[0] else null
-    { list, item }
-  view: (c) ->
-    m 'div', [
-      NavComponent
-    ,
-      m.component ListComponent, list: c.list
-    ,
-      if c.item? then m.component ItemComponent, item: c.item else null
-    ].filter (i) -> i?
 
 m.route.mode = 'hash'
 
