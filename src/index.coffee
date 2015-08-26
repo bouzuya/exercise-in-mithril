@@ -1,4 +1,5 @@
 m = require 'mithril'
+ListComponent = require './list-component'
 ItemComponent = require './item-component'
 NavComponent = require './nav-component'
 
@@ -72,14 +73,6 @@ HomeComponent =
     ,
       'Hello, Mithril!'
     ]
-
-ListComponent =
-  controller: (attrs) ->
-    list: attrs.list
-  view: (c) ->
-    m 'ul', c.list.map (i) ->
-      m 'li',
-        m.component ItemComponent, item: i
 
 ListAppComponent =
   controller: ->
